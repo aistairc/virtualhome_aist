@@ -1,0 +1,10 @@
+{
+  "sampel1":{
+    "color":"red",
+    "number":1
+  },
+  "samole2":{
+    "color":"blue",
+    "number":2
+  }
+}

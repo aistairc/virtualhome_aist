@@ -68,15 +68,15 @@ class Action(Enum):
     STIR = ("Stir", 1, [[]]),
     THROW = ("Throw", 1,[[]]),
     UNFOLD = ("Unfold", 1,[[]]),
-    VACUUM = ("Vacuum", 1, [[]]),
+    VACUUM = ("Vacuum", 0),
     WARP = ("Wrap", 1,[[]]),
     WRITE = ("Write", 1,[[]]),
     FALL = ("Fall", 0),
     STRADDLE = ("Straddle", 0),
     LEGOPP = ("Legopp", 1,[[]]),
     SEW = ("Sew", 1, [[]]),
-    SHAKE = ("Shake", 1, [[]]),
-    SMELL = ("Smell", 1, [[]]),
+    SHAKE = ("Shake", 0),
+    SMELL = ("Smell", 1, [['GRABBABLE']]),
     SOAK = ("SOAK", 1, [[]])
 
     
