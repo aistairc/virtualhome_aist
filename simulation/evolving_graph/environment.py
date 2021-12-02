@@ -30,6 +30,7 @@ class State(Enum):
     LYING = 8
     PLUGGED_IN = 9
     PLUGGED_OUT = 10
+    # New state
     FOLDED = 11
     WRAPED = 12
     WET = 13
