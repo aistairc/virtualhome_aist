@@ -333,7 +333,8 @@ class UnityCommunication(object):
                       skip_execution=False, find_solution=False, output_folder='Output/', file_name_prefix="script",
                       frame_rate=5, image_synthesis=['normal'], save_pose_data=False,
                       image_width=640, image_height=480, recording=False,
-                      save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False):
+                      save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False,
+                      vis_check_object=False):
         """
         Executes a script in the simulator. The script can be single or multi agent, 
         and can be used to generate a video, or just to change the state of the environment
@@ -356,6 +357,9 @@ class UnityCommunication(object):
         :param list camera_mode: list with cameras used to render data. Can be a str(i) with i being a scene camera index or one of the cameras from `character_cameras`
         :param int time_scale: accelerate time at which actions happen
         :param bool skip_animation: whether agent should teleport/do actions without animation (True), or perform the animations (False) 
+        :param string vis_check_objectname: object name checked by all camera  <== Delete 3th/March/2022
+        :param int vis_check_objectid; object id checked by all cameras <== Delete 3th/March/2022
+        :param bool vis_check_object checked by all cameras or not
 
         :return: pair success (bool), message: (str)
         """
@@ -367,7 +371,8 @@ class UnityCommunication(object):
                   'save_pose_data': save_pose_data, 'save_scene_states': save_scene_states,
                   'camera_mode': camera_mode, 'recording': recording,
                   'image_width': image_width, 'image_height': image_height,
-                  'time_scale': time_scale, 'skip_animation': skip_animation}
+                  'time_scale': time_scale, 'skip_animation': skip_animation,
+                  'vis_check_object': vis_check_object}
         response = self.post_command({'id': str(time.time()), 'action': 'render_script',
                                       'stringParams': [json.dumps(params)] + script})
 
