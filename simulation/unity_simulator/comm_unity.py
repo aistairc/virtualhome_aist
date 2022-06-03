@@ -334,7 +334,7 @@ class UnityCommunication(object):
                       frame_rate=5, image_synthesis=['normal'], save_pose_data=False,
                       image_width=640, image_height=480, recording=False,
                       save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False,
-                      vis_check_object=False, out_graph=False):
+                      vis_check_object=False, vis_check_character=False, out_graph=False):
         """
         Executes a script in the simulator. The script can be single or multi agent, 
         and can be used to generate a video, or just to change the state of the environment
@@ -360,6 +360,7 @@ class UnityCommunication(object):
         :param string vis_check_objectname: object name checked by all camera  <== Delete 3th/March/2022
         :param int vis_check_objectid; object id checked by all cameras <== Delete 3th/March/2022
         :param bool vis_check_object checked by all cameras or not
+        :param bool vis_check_character checked by all camera or not
         :param bool out_graph out graph data every frame or not
 
         :return: pair success (bool), message: (str)
@@ -373,7 +374,8 @@ class UnityCommunication(object):
                   'camera_mode': camera_mode, 'recording': recording,
                   'image_width': image_width, 'image_height': image_height,
                   'time_scale': time_scale, 'skip_animation': skip_animation,
-                  'vis_check_object': vis_check_object, 'out_graph': out_graph}
+                  'vis_check_object': vis_check_object, 'vis_check_character': vis_check_character,
+                  'out_graph': out_graph}
         response = self.post_command({'id': str(time.time()), 'action': 'render_script',
                                       'stringParams': [json.dumps(params)] + script})
 
