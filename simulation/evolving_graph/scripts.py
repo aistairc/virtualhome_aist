@@ -34,7 +34,7 @@ class Action(Enum):
     TOUCH = ("Touch", 1, [[]])
     TURNTO = ("Turn to", 1, [[]])
     WATCH = ("Watch", 1, [[]])
-    WIPE = ("Wipe", 1, [[]])
+    WIPE = ("Wipe", 1, [[]]) # TODO: WIPE must have 2 params
     PUTON = ("PutOn", 1, [['CLOTHES']])
     PUTOFF = ("PutOff", 1, [['CLOHES']])
     GREET = ("Greet", 1, [['PERSON']])
@@ -48,7 +48,7 @@ class Action(Enum):
     MOVE = ("Move", 1, [['MOVABLE']])
     WASH = ("Wash", 1, [[]])
     RINSE = ("Rinse", 1, [[]])
-    SCRUB = ("Scrub", 1, [[]])
+    SCRUB = ("Scrub", 1, [[]]) # TODO: SCRUB must have 2 params
     SQUEEZE = ("Squeeze", 1, [['CLOTHES']])
     PLUGIN = ("PlugIn", 1, [['HAS_PLUG']])
     PLUGOUT = ("PlugOut", 1, [['HAS_PLUG']])
@@ -59,25 +59,37 @@ class Action(Enum):
     RELEASE = ("Release", 1, [[]])
 
     # Add Action
-    JUMP = ("Jump", 0),
-    KNEEL = ("Kneel", 0),
-    LIFT = ("Lift", 1, [[]]),
-    SQUAT = ("Squat", 0),
-    STRECH = ("Strech", 1, [[]]),
-    SWEEP = ("Sweep", 0)
-    STIR = ("Stir", 1, [[]]),
-    THROW = ("Throw", 1,[[]]),
-    UNFOLD = ("Unfold", 1,[[]]),
-    VACUUM = ("Vacuum", 0),
-    WARP = ("Wrap", 1,[[]]),
-    WRITE = ("Write", 1,[[]]),
-    FALL = ("Fall", 0),
-    STRADDLE = ("Straddle", 0),
-    LEGOPP = ("Legopp", 1,[[]]),
-    SEW = ("Sew", 1, [[]]),
-    SHAKE = ("Shake", 0),
-    SMELL = ("Smell", 1, [['GRABBABLE']]),
-    SOAK = ("SOAK", 1, [[]])
+    JUMP = ("Jump", 0) #OK
+    KNEEL = ("Kneel", 0) #OK
+    LIFT = ("Lift", 1, [[]]) #OK
+    SQUAT = ("Squat", 0) #OK
+    STRETCH = ("Stretch", 0) # Edited STRECH to STRETCH by Ye Win 2022/09/21
+    SWEEP = ("Sweep", 1, [[]]) # Edited for adding parameter by Ye Win 2022/09/21
+    STIR = ("Stir", 1, [[]])
+    THROW = ("Throw", 1,[[]]) #OK
+    UNFOLD = ("Unfold", 1,[[]]) #OK
+    VACUUM = ("Vacuum", 0) #OK
+    WRAP = ("Wrap", 1,[[]]) # Edited WARP to WRAP by Ye Win 2022/09/21
+    WRITE = ("Write", 1,[[]]) #OK
+    FALL = ("Fall", 0) #OK
+    STRADDLE = ("Straddle", 0) #OK
+    LEGOPP = ("Legopp", 1,[[]]) #OK
+    SEW = ("Sew", 1, [[]]) #NOT DEV
+    SHAKE = ("Shake", 1,[[]]) # Edited for adding parameter by Ye Win 2022/09/21
+    SMELL = ("Smell", 1, [['GRABBABLE']]) #OK
+    SOAK = ("SOAK", 1, [[]]) #OK
+    FALLSIT = ("FallSit", 1, [[]]) # Added by Ye Win 2022/09/15
+    CLIMB = ("Climb", 1, [[]]) # Added by Ye Win 2022/09/21
+    FALLTABLE1 = ("FallTable1", 0) # Added by Ye Win 2022/09/21
+    FALLTABLE2 = ("FallTable2", 0) # Added by Ye Win 2022/09/21
+    TALK = ("Talk", 1, [[]]) # Added by Ye Win 2022/09/21
+    TEXT = ("Text", 1, [[]]) # Added by Ye Win 2022/09/21
+    FOLD = ("Fold", 0) # Added by Ye Win 2022/09/21
+    JUMPUP = ("JumpUp", 1, [[]]) # Added by Ye Win 2022/09/21
+    JUMPDOWN = ("JumpDown", 0) # Added by Ye Win 2022/09/21
+    FALLFROM = ("FallFrom", 0) # Added by Ye Win 2022/09/21
+    FALLBACK = ("FallBack", 0) # Added by Ye Win 2022/09/21
+    GODOWN = ("GoDown", 0) # Added by Ye Win 2022/09/22
 
     
 
