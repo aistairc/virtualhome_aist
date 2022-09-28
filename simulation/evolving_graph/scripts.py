@@ -34,7 +34,7 @@ class Action(Enum):
     TOUCH = ("Touch", 1, [[]])
     TURNTO = ("Turn to", 1, [[]])
     WATCH = ("Watch", 1, [[]])
-    WIPE = ("Wipe", 1, [[]]) # TODO: WIPE must have 2 params
+    WIPE = ("Wipe", 2, [[], []]) # Edited to 2 params action by Ye Win 2022/09/27
     PUTON = ("PutOn", 1, [['CLOTHES']])
     PUTOFF = ("PutOff", 1, [['CLOHES']])
     GREET = ("Greet", 1, [['PERSON']])
