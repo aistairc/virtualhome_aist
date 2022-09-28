@@ -10,6 +10,7 @@ dump_preconds = False
 rooms = [x.lower() for x in [
         'Kitchen',
         'Bathroom',
+        'Livingroom',
         'Living_Room',
         'Dining_Room',
         'Bedroom',
@@ -73,7 +74,7 @@ def get_preconds_script(script_lines):
         if len(obj_names) == 0:
             continue
         obj_id = (obj_names[0], ins_num[0])
-        if action == 'SwitchOff':
+        if action.upper() == 'SWITCHOFF':
             if obj_id not in is_on.keys(): # If this light was never switched on/off
                 precond_dict.addPrecond('is_on', obj_id, [])
                 # If it was not plugged, needs to be plugged
@@ -86,7 +87,7 @@ def get_preconds_script(script_lines):
                     raise ScriptFail('Error, object turned off twice')
             is_on[obj_id] = False
 
-        if action == 'SwitchOn':
+        if action.upper() == 'SWITCHON':
             if obj_id in is_on.keys() and is_on[obj_id]:
                 print('\n'.join(content))
                 raise ('Error, object turned on twice')
