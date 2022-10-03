@@ -48,7 +48,7 @@ class Action(Enum):
     MOVE = ("Move", 1, [['MOVABLE']])
     WASH = ("Wash", 1, [[]])
     RINSE = ("Rinse", 1, [[]])
-    SCRUB = ("Scrub", 1, [[]]) # TODO: SCRUB must have 2 params
+    SCRUB = ("Scrub", 2, [[], []]) # Edited to 2 params action by Ye Win 2022/09/30
     SQUEEZE = ("Squeeze", 1, [['CLOTHES']])
     PLUGIN = ("PlugIn", 1, [['HAS_PLUG']])
     PLUGOUT = ("PlugOut", 1, [['HAS_PLUG']])
