@@ -859,7 +859,7 @@ class PourExecutor(ActionExecutor):
             info.error('{} is not pourable or drinkable', src_node)
             return False
 
-        if Property.RECIPIENT not in dest_node.properties and dest_node.class_name not in ["hands_both", "sponge", "face", "bathtub"]: # Added bathtub by Ye Win 2022/09/30
+        if Property.RECIPIENT not in dest_node.properties and dest_node.class_name not in ["hands_both", "sponge", "face", "bathtub", "toilet"]: # Added toilet by Ye Win 2022/10/4
             info.error('{} is not recipient', dest_node)
             return False
 
