@@ -1087,34 +1087,39 @@ class CutExecutor(ActionExecutor):
     def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
         current_line = script[0]
         info.set_current_line(current_line)
-        node = state.get_state_node(current_line.object())
-        if node is None:
+        src_node = state.get_state_node(current_line.object()) # Change var name from node to src_node 2022/11/01
+        dest_node = state.get_state_node(current_line.subject()) # Added 2022/11/01
+        if dest_node is None:
             info.object_found_error()
-        elif self.check_cuttable(state, node, info, char_index):
+        elif self.check_cuttable(state, src_node, dest_node, info, char_index):
             if modify:
                 yield state.change_state([])
             else:
                 yield state
 
-    def check_cuttable(self, state: EnvironmentState, node: GraphNode, info: ExecutionInfo, char_index):
+    # Change function params 2022/11/01
+    def check_cuttable(self, state: EnvironmentState, src_node: GraphNode, dest_node: GraphNode, info: ExecutionInfo, char_index):
 
-        if _find_free_hand(state, char_index) is None:
-            info.error('{} does not have a free hand', _get_character_node(state, char_index))
+        # if _find_free_hand(state, char_index) is None: # Comment out since it isn't needed according to Unity Cut Action 2022/11/01
+        #     info.error('{} does not have a free hand', _get_character_node(state, char_index))
+        #     return False
+        if not _is_character_close_to(state, dest_node, char_index):
+            info.error('{} is not close to {}', _get_character_node(state, char_index), dest_node)
             return False
-        if not _is_character_close_to(state, node, char_index):
-            info.error('{} is not close to {}', _get_character_node(state, char_index), node)
+        if Property.EATABLE not in dest_node.properties:
+            info.error('{} is not eatable', dest_node)
             return False
-        if Property.EATABLE not in node.properties:
-            info.error('{} is not eatable', node)
-            return False
-        if Property.CUTTABLE not in node.properties:
-            info.error('{} is not cuttable', node)
+        if Property.CUTTABLE not in dest_node.properties:
+            info.error('{} is not cuttable', dest_node)
             return False
 
         char_node = _get_character_node(state, char_index)
         holding_nodes = _find_nodes_from(state, char_node, [Relation.HOLDS_LH, Relation.HOLDS_RH])
         if not any(['knife' in node.class_name for node in holding_nodes]):
             info.error('{} is not holding a knife', _get_character_node(state, char_index))
+            return False
+        if src_node.class_name not in ['knife', 'cutlery_knife', 'chefknife']: # Add condition block 2022/11/01
+            info.error('{} is not a knife', src_node)
             return False
 
         return True

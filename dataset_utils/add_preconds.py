@@ -348,6 +348,34 @@ def get_preconds_script(script_lines):
                 if is_sitting is not None:
                     precond_dict.addPrecond('facing', is_sitting, [obj_id])
 
+    # Added new precond for CUT action 2022/11/01
+    object_grabbed = {}
+    for i in range(len(content)):
+        curr_block = content[i]
+        action, obj_names, ins_num = parseStrBlock(curr_block)
+        if len(obj_names) > 1:
+            object_id = (obj_names[0], ins_num[0])
+            subject_id = (obj_names[1], ins_num[1])
+        elif len(obj_names) == 1:
+            object_id = (obj_names[0], ins_num[0])
+        else:
+            continue
+        if action.upper() == 'CUT':
+            if precond_dict.obtainCond('grabbed') is not None:
+                for k in precond_dict.obtainCond('grabbed'):
+                    object_grabbed[k] = True
+                if object_id not in object_grabbed.keys() or not object_grabbed[object_id]:
+                    raise ScriptFail('Error, Character must hold the object {} first.'.format(object_id[0]))
+                if subject_id not in object_grabbed.keys() or not object_grabbed[subject_id]:
+                    raise ScriptFail('Error, Character must hold the object {} first.'.format(subject_id[0]))
+            else:
+                raise ScriptFail('Error, Character is not holding anything')
+        elif action.upper() == 'GRAB':
+            precond_dict.addPrecond('grabbed', object_id, [])
+        else:
+            continue
+
+
     # Add free precond
 
     for i in range(len(content)):

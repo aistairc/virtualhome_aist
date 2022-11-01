@@ -52,7 +52,7 @@ class Action(Enum):
     SQUEEZE = ("Squeeze", 1, [['CLOTHES']])
     PLUGIN = ("PlugIn", 1, [['HAS_PLUG']])
     PLUGOUT = ("PlugOut", 1, [['HAS_PLUG']])
-    CUT = ("Cut", 2, [['EATABLE', 'CUTABLE'], []])
+    CUT = ("Cut", 2, [[], ['EATABLE', 'CUTABLE']]) # Change the sequence of params 2022/11/01
     EAT = ("Eat", 1, [['EATABLE']]) 
     SLEEP = ("Sleep", 0) 
     WAKEUP = ("WakeUp", 0)
