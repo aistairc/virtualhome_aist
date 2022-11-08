@@ -855,11 +855,11 @@ class PourExecutor(ActionExecutor):
 
     def _check_pourable(self, state: EnvironmentState, src_node: GraphNode, dest_node: GraphNode, info: ExecutionInfo, char_index):
 
-        if Property.POURABLE not in src_node.properties and Property.DRINKABLE not in src_node.properties:
+        if (Property.POURABLE not in src_node.properties and Property.DRINKABLE not in src_node.properties) and src_node.class_name not in ["cereal", "food_food"]: # add new condition 2022/10/26
             info.error('{} is not pourable or drinkable', src_node)
             return False
 
-        if Property.RECIPIENT not in dest_node.properties and dest_node.class_name not in ["hands_both", "sponge", "face"]:
+        if Property.RECIPIENT not in dest_node.properties and dest_node.class_name not in ["hands_both", "sponge", "face", "bathtub", "toilet"]: # Added toilet 2022/10/4
             info.error('{} is not recipient', dest_node)
             return False
 
@@ -1087,34 +1087,39 @@ class CutExecutor(ActionExecutor):
     def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
         current_line = script[0]
         info.set_current_line(current_line)
-        node = state.get_state_node(current_line.object())
-        if node is None:
+        src_node = state.get_state_node(current_line.object()) # Change var name from node to src_node 2022/11/01
+        dest_node = state.get_state_node(current_line.subject()) # Added 2022/11/01
+        if dest_node is None:
             info.object_found_error()
-        elif self.check_cuttable(state, node, info, char_index):
+        elif self.check_cuttable(state, src_node, dest_node, info, char_index):
             if modify:
                 yield state.change_state([])
             else:
                 yield state
 
-    def check_cuttable(self, state: EnvironmentState, node: GraphNode, info: ExecutionInfo, char_index):
+    # Change function params 2022/11/01
+    def check_cuttable(self, state: EnvironmentState, src_node: GraphNode, dest_node: GraphNode, info: ExecutionInfo, char_index):
 
-        if _find_free_hand(state, char_index) is None:
-            info.error('{} does not have a free hand', _get_character_node(state, char_index))
+        # if _find_free_hand(state, char_index) is None: # Comment out since it isn't needed according to Unity Cut Action 2022/11/01
+        #     info.error('{} does not have a free hand', _get_character_node(state, char_index))
+        #     return False
+        if not _is_character_close_to(state, dest_node, char_index):
+            info.error('{} is not close to {}', _get_character_node(state, char_index), dest_node)
             return False
-        if not _is_character_close_to(state, node, char_index):
-            info.error('{} is not close to {}', _get_character_node(state, char_index), node)
+        if Property.EATABLE not in dest_node.properties:
+            info.error('{} is not eatable', dest_node)
             return False
-        if Property.EATABLE not in node.properties:
-            info.error('{} is not eatable', node)
-            return False
-        if Property.CUTTABLE not in node.properties:
-            info.error('{} is not cuttable', node)
+        if Property.CUTTABLE not in dest_node.properties:
+            info.error('{} is not cuttable', dest_node)
             return False
 
         char_node = _get_character_node(state, char_index)
         holding_nodes = _find_nodes_from(state, char_node, [Relation.HOLDS_LH, Relation.HOLDS_RH])
         if not any(['knife' in node.class_name for node in holding_nodes]):
             info.error('{} is not holding a knife', _get_character_node(state, char_index))
+            return False
+        if src_node.class_name not in ['knife', 'cutlery_knife', 'chefknife']: # Add condition block 2022/11/01
+            info.error('{} is not a knife', src_node)
             return False
 
         return True
@@ -1449,6 +1454,186 @@ class SoakExcutor(ActionExecutor):
                 yield state.change_state([])
             else:
                 yield state
+
+# Added 2022/09/15
+class FallSitExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class ClimbExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class FallTable1Excutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class FallTable2Excutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class TalkExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class TextExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class FoldExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class JumpUpExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class JumpDownExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class FallFromExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/21
+class FallBackExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+
+# Added 2022/09/22
+class GoDownExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
 PointAtExecutor = LookAtExecutor
 
 
@@ -1668,13 +1853,13 @@ class ScriptExecutor(object):
         Action.KNEEL: KneelExcutor(),
         Action.LIFT: LiftExcutor(),
         Action.SQUAT: SquatExcutor(),
-        Action.STRECH: StrechExcutor(),
+        Action.STRETCH: StrechExcutor(), # Edited STRECH to STRETCH 2022/09/21
         Action.SLEEP: SleepExecutor(),
         Action.STIR: StirExcutor(),
         Action.THROW: ThrowExcutor(),
         Action.UNFOLD: UnfoldExcutor(),
         Action.VACUUM: VacuumExcutor(),
-        Action.WARP: WrapExcutor(),
+        Action.WRAP: WrapExcutor(), # Edited WARP to WRAP 2022/09/21
         Action.WRITE: WriteExcutor(),
         Action.FALL: FallExcutor(),
         Action.STRADDLE: StraddleExcutor(),
@@ -1682,7 +1867,20 @@ class ScriptExecutor(object):
         Action.SEW: SewExcutor(),
         Action.SHAKE: ShakeExcutor(),
         Action.SMELL: SmellExcutor(),
-        Action.SOAK: SoakExcutor()
+        Action.SOAK: SoakExcutor(),
+        Action.FALLSIT: FallSitExcutor(), # Added 2022/09/15
+        Action.CLIMB: ClimbExcutor(), # Added 2022/09/21
+        Action.FALLTABLE1: FallTable1Excutor(), # Added 2022/09/21
+        Action.FALLTABLE2: FallTable2Excutor(), # Added 2022/09/21
+        Action.TALK: TalkExcutor(), # Added 2022/09/21
+        Action.TEXT: TextExcutor(), # Added 2022/09/21
+        Action.FOLD: FoldExcutor(), # Added 2022/09/21
+        Action.JUMPUP: JumpUpExcutor(), # Added 2022/09/21
+        Action.JUMPDOWN: JumpDownExcutor(), # Added 2022/09/21
+        Action.SWEEP: SweepExcutor(), # Added 2022/09/21
+        Action.FALLFROM: FallFromExcutor(), # Added 2022/09/21
+        Action.FALLBACK: FallBackExcutor(), # Added 2022/09/21
+        Action.GODOWN: GoDownExcutor(), # Added 2022/09/22
     }
 
     def __init__(self, graph: EnvironmentGraph, name_equivalence, char_index: int=0):

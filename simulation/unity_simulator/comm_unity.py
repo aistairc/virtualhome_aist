@@ -334,8 +334,13 @@ class UnityCommunication(object):
                       frame_rate=5, image_synthesis=['normal'], save_pose_data=False,
                       image_width=640, image_height=480, recording=False,
                       save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False,
+<<<<<<< HEAD
                       vis_check_object=False, vis_check_character=False, 
                       out_graph=False, per_frame=5):
+=======
+                      vis_check_object=False, vis_check_character=False, out_graph=False,
+                      per_frame=5):
+>>>>>>> 01cb6270b895ea2d2d5f6268437fb4864abfde37
         """
         Executes a script in the simulator. The script can be single or multi agent, 
         and can be used to generate a video, or just to change the state of the environment
