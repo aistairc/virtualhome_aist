@@ -73,7 +73,7 @@ class Action(Enum):
     WRITE = ("Write", 1,[[]]) #OK
     FALL = ("Fall", 0) #OK
     STRADDLE = ("Straddle", 0) #OK
-    LEGOPP = ("Legopp", 1,[[]]) #OK
+    LEGOPP = ("Legopp", 0) # Removed parameter requirement 2022/12/07
     SEW = ("Sew", 1, [[]]) #NOT DEV
     SHAKE = ("Shake", 1,[[]]) # Edited for adding parameter 2022/09/21
     SMELL = ("Smell", 1, [['GRABBABLE']]) #OK
