@@ -1634,6 +1634,24 @@ class GoDownExcutor(ActionExecutor):
                 yield state.change_state([])
             else:
                 yield state
+
+# Added 2022/12/09
+class StandExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.SITTING in char_node.states or State.LYING in char_node.states:
+            #new_char_node = char_node.copy()
+            char_node.states.discard(State.SITTING)
+            char_node.states.discard(State.LYING)
+            if modify:
+                yield state.change_state([ChangeNode(char_node)])
+            else:
+                yield state
+        else:
+            info.error('{} is not sitting', char_node)
 PointAtExecutor = LookAtExecutor
 
 
@@ -1881,6 +1899,7 @@ class ScriptExecutor(object):
         Action.FALLFROM: FallFromExcutor(), # Added 2022/09/21
         Action.FALLBACK: FallBackExcutor(), # Added 2022/09/21
         Action.GODOWN: GoDownExcutor(), # Added 2022/09/22
+        Action.STAND: StandExcutor(), # Added 2022/12/09
     }
 
     def __init__(self, graph: EnvironmentGraph, name_equivalence, char_index: int=0):
