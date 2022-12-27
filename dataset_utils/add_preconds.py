@@ -145,7 +145,7 @@ def get_preconds_script(script_lines):
     for i in range(len(content)):
         curr_block = content[i]
         action, obj_names, ins_num = parseStrBlock(curr_block)
-        if action == 'Sit':
+        if action.upper() == 'SIT': # Edit condition writing style 2022/12/09
             if (not is_sitting) and (not is_lying):
                 is_sitting = True
             else:

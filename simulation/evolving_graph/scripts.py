@@ -90,6 +90,7 @@ class Action(Enum):
     FALLFROM = ("FallFrom", 0) # Added 2022/09/21
     FALLBACK = ("FallBack", 0) # Added 2022/09/21
     GODOWN = ("GoDown", 0) # Added 2022/09/22
+    STAND = ("Stand", 0) # Added 2022/12/09
 
     
 
