@@ -492,6 +492,8 @@ def _check_puttable(state: EnvironmentState, src_node: GraphNode, dest_node: Gra
     if relation == Relation.INSIDE:
         if Property.CAN_OPEN not in dest_node.properties or State.OPEN in dest_node.states:
             return True
+        if Property.CAN_OPEN in dest_node.properties: # Added to enable PUTIN to non-CAN_OPEN object 2022/12/28
+            return True
         else:
             info.error('{} is not open or is not openable', dest_node)
             return False
