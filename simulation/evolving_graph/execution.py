@@ -1025,8 +1025,11 @@ class SqueezeExecutor(ActionExecutor):
     def check_squeezable(self, state: EnvironmentState, node: GraphNode, info: ExecutionInfo, char_index):
         
         if _find_free_hand(state, char_index) is None:
-            info.error('{} does not have a free hand', _get_character_node(state, char_index))
-            return False
+            if Property.CREAM in node.properties and Property.GRABBABLE in node.properties: # Added condition to squeeze without free hand 2023/01/18
+                return True
+            else:
+                info.error('{} does not have a free hand', _get_character_node(state, char_index))
+                return False
         if not _is_character_close_to(state, node, char_index):
             info.error('{} is not close to {}', _get_character_node(state, char_index), node)
             return False
