@@ -91,6 +91,7 @@ class Action(Enum):
     FALLBACK = ("FallBack", 0) # Added 2022/09/21
     GODOWN = ("GoDown", 0) # Added 2022/09/22
     STAND = ("Stand", 0) # Added 2022/12/09
+    BRUSH = ("Brush", 1) # Added 2023/01/19
 
     
 

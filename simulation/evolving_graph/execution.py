@@ -1659,6 +1659,21 @@ class StandExcutor(ActionExecutor):
             info.error('{} is not sitting', char_node)
 PointAtExecutor = LookAtExecutor
 
+# Added 2023/01/19
+class BrushExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+PointAtExecutor = LookAtExecutor
 
 # General checks and helpers
 
@@ -1905,6 +1920,7 @@ class ScriptExecutor(object):
         Action.FALLBACK: FallBackExcutor(), # Added 2022/09/21
         Action.GODOWN: GoDownExcutor(), # Added 2022/09/22
         Action.STAND: StandExcutor(), # Added 2022/12/09
+        Action.BRUSH: BrushExcutor(), # Added 2023/01/19
     }
 
     def __init__(self, graph: EnvironmentGraph, name_equivalence, char_index: int=0):
