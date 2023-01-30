@@ -1527,8 +1527,8 @@ class TalkExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        if State.LYING in char_node.states: # Removed Sitting condition 2023/01/30
+            info.error("{} is lying", char_node) # Removed Sitting condition 2023/01/30
         else:
             if modify:
                 yield state.change_state([])
@@ -1542,8 +1542,8 @@ class TextExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        if State.LYING in char_node.states: # Removed Sitting condition 2023/01/30
+            info.error("{} is lying", char_node) # Removed Sitting condition 2023/01/30
         else:
             if modify:
                 yield state.change_state([])
@@ -1557,8 +1557,8 @@ class FoldExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        if State.LYING in char_node.states: # Removed Sitting condition 2023/01/30
+            info.error("{} is lying", char_node) # Removed Sitting condition 2023/01/30
         else:
             if modify:
                 yield state.change_state([])
@@ -1666,8 +1666,8 @@ class BrushExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        if State.LYING in char_node.states: # Removed Sitting condition 2023/01/30
+            info.error("{} is lying", char_node) # Removed Sitting condition 2023/01/30
         else:
             if modify:
                 yield state.change_state([])
