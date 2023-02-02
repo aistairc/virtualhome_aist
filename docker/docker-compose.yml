@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  unity:
+    build:
+      context: ./unity
+    image: vh0
+    volumes:
+      - ./Output:/Output # NOTE: ホスト側を実行するマシンにあわせる
+  api:
+    build:
+      context: ..
+      dockerfile: ./docker/api/Dockerfile
+    image: vh0-api
+    ports:
+      - "80:80"
+    volumes:
+      - ./Output:/Output # NOTE: ホスト側を実行するマシンにあわせる
+    depends_on:
+      unity:
+        condition: service_started
+    environment:
+      ALLOW_CORS: 'true'
