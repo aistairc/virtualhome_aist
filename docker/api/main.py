@@ -1,10 +1,10 @@
-from os import environ
+import os
 from datetime import datetime
 from typing import List, Union
 from uuid import uuid4
 import subprocess
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -15,7 +15,7 @@ from simulation.unity_simulator.comm_unity import UnityCommunication
 
 app = FastAPI()
 
-if environ.get('ALLOW_CORS') == 'true':
+if os.environ.get('ALLOW_CORS') == 'true':
     app.add_middleware(
         CORSMiddleware,
         allow_origins=['*'],
@@ -51,7 +51,7 @@ class VideoItem(BaseModel):
     characters: List[CharacterItem] = []
 
 
-@app.post("/generate_video")
+@app.post("/api/generate_video")
 def generate_video(video_item: VideoItem):
     video_dict = video_item.dict()
     comm = UnityCommunication(url="unity")
@@ -92,5 +92,16 @@ def generate_video(video_item: VideoItem):
     except Exception as e:
         return {"ok": False, "message": str(e)}
 
-    video_path = f"/static/{video_path}"
     return {"ok": True, "video_path": video_path}
+
+
+
+@app.delete("/api/videos/{video_name}")
+def delete_video(video_name: str):
+    output_folder = f"Output"
+    video_path = os.path.join("/", output_folder, video_name)
+    if os.path.exists(video_path):
+        os.remove(video_path)
+    else:
+        raise HTTPException(status_code=404, detail="Item not found")
+
