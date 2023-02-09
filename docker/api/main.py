@@ -4,10 +4,11 @@ from typing import List, Union
 from uuid import uuid4
 import subprocess
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+import shutil
 
 from simulation.unity_simulator.comm_unity import UnityCommunication
 
@@ -65,7 +66,7 @@ def generate_video(video_item: VideoItem):
             comm.add_character(character["resource"], position, character["initial_room"])
 
         now = datetime.utcnow()
-        output_folder = f"Output/{now:%Y%m}/"
+        output_folder = f"Output/"
         file_name_prefix = f"{uuid4()}"
         success, message = comm.render_script(
             video_dict["script"],
@@ -78,7 +79,7 @@ def generate_video(video_item: VideoItem):
             raise ValueError(message)
 
         # mp4に変換
-        video_path = f"{now:%Y%m}/{file_name_prefix}/0/video.mp4"
+        video_path = f"{file_name_prefix}.mp4"
         command_set = [
             "ffmpeg",
             "-framerate", "5",
@@ -87,6 +88,7 @@ def generate_video(video_item: VideoItem):
             f"/Output/{video_path}",
         ]
         subprocess.call(command_set)
+        shutil.rmtree(f'/{output_folder}{file_name_prefix}')
     except Exception as e:
         return {"ok": False, "message": str(e)}
 
