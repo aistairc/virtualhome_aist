@@ -492,6 +492,8 @@ def _check_puttable(state: EnvironmentState, src_node: GraphNode, dest_node: Gra
     if relation == Relation.INSIDE:
         if Property.CAN_OPEN not in dest_node.properties or State.OPEN in dest_node.states:
             return True
+        if Property.CAN_OPEN in dest_node.properties: # Added to enable PUTIN to non-CAN_OPEN object 2022/12/28
+            return True
         else:
             info.error('{} is not open or is not openable', dest_node)
             return False
@@ -1023,8 +1025,11 @@ class SqueezeExecutor(ActionExecutor):
     def check_squeezable(self, state: EnvironmentState, node: GraphNode, info: ExecutionInfo, char_index):
         
         if _find_free_hand(state, char_index) is None:
-            info.error('{} does not have a free hand', _get_character_node(state, char_index))
-            return False
+            if Property.CREAM in node.properties and Property.GRABBABLE in node.properties: # Added condition to squeeze without free hand 2023/01/18
+                return True
+            else:
+                info.error('{} does not have a free hand', _get_character_node(state, char_index))
+                return False
         if not _is_character_close_to(state, node, char_index):
             info.error('{} is not close to {}', _get_character_node(state, char_index), node)
             return False
@@ -1654,6 +1659,21 @@ class StandExcutor(ActionExecutor):
             info.error('{} is not sitting', char_node)
 PointAtExecutor = LookAtExecutor
 
+# Added 2023/01/19
+class BrushExcutor(ActionExecutor):
+
+    def execute(self, script: Script, state: EnvironmentState, info: ExecutionInfo, char_index, modify=True):
+
+        info.set_current_line(script[0])
+        char_node = _get_character_node(state, char_index)
+        if State.LYING in char_node.states or State.SITTING in char_node.states:
+            info.error("{} is not standing, lying or sitting", char_node)
+        else:
+            if modify:
+                yield state.change_state([])
+            else:
+                yield state
+PointAtExecutor = LookAtExecutor
 
 # General checks and helpers
 
@@ -1900,6 +1920,7 @@ class ScriptExecutor(object):
         Action.FALLBACK: FallBackExcutor(), # Added 2022/09/21
         Action.GODOWN: GoDownExcutor(), # Added 2022/09/22
         Action.STAND: StandExcutor(), # Added 2022/12/09
+        Action.BRUSH: BrushExcutor(), # Added 2023/01/19
     }
 
     def __init__(self, graph: EnvironmentGraph, name_equivalence, char_index: int=0):
