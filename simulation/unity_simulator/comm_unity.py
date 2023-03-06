@@ -334,7 +334,8 @@ class UnityCommunication(object):
                       frame_rate=5, image_synthesis=['normal'], save_pose_data=False,
                       image_width=640, image_height=480, recording=False,
                       save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False,
-                      vis_check_object=False, vis_check_character=False, out_graph=False,
+                      vis_check_object=False, vis_check_character=False, vis_check_object_all=False,
+                      out_graph=False,
                       per_frame=5):
         """
         Executes a script in the simulator. The script can be single or multi agent, 
@@ -362,8 +363,9 @@ class UnityCommunication(object):
         :param int vis_check_objectid; object id checked by all cameras <== Delete 3th/March/2022
         :param bool vis_check_object checked by all cameras or not
         :param bool vis_check_character checked by all camera or not
+        :param bool vis_check_object_all checked objects of the camera belong to the room
         :param bool out_graph out graph data every frame or not
-        :param bool per_frame out grap data per frame
+        :param int per_frame out grap data per frame
 
         :return: pair success (bool), message: (str)
         """
@@ -377,6 +379,7 @@ class UnityCommunication(object):
                   'image_width': image_width, 'image_height': image_height,
                   'time_scale': time_scale, 'skip_animation': skip_animation,
                   'vis_check_object': vis_check_object, 'vis_check_character': vis_check_character,
+                  'vis_check_object_all': vis_check_object_all,
                   'out_graph': out_graph, 'per_frame': per_frame}
         response = self.post_command({'id': str(time.time()), 'action': 'render_script',
                                       'stringParams': [json.dumps(params)] + script})
