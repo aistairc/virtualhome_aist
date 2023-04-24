@@ -27,7 +27,7 @@ comm.render_script(script)
 Check the notebook [demo](../../demo/unity_demo.ipynb) to further explore the simulator.
 
 
-## Modification of render_script recorded on 2023/04/21
+## Modification of render_script (Recorded on 2023/04/21)
 Based on the simulator Build_2023_0404, three new camera modes are added. They are SPECIFIED, DIAGONAL1 and DIAGONAL2.
 ### SPECIFIED
 SPECIFIED camera mode will serve the same functionalities as AUTO mode. It makes only differences that in this mode, we can set our desired camera indexes fewer and more precise camera views than AUTO with an additional param called 'specified_cameras'. For example,
