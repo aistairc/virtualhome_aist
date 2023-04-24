@@ -61,6 +61,7 @@ comm.render_script(
 	)
 ```
 It will result two videos in the following views:
+
 <img src="../../assets/diagonal1_output_sample.png" width=40%><img src="../../assets/diagonal2_output_sample.png" width=40%>
 
 For further reference, please check this notebook [ref](../../demo/scenario_generate_graph_and_video_with_cameras_changes.ipynb)
