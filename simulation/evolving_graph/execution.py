@@ -1368,13 +1368,13 @@ class FallExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 class StraddleExcutor(ActionExecutor):
 
@@ -1467,13 +1467,13 @@ class FallSitExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 # Added 2022/09/21
 class ClimbExcutor(ActionExecutor):
@@ -1497,13 +1497,13 @@ class FallTable1Excutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 # Added 2022/09/21
 class FallTable2Excutor(ActionExecutor):
@@ -1512,13 +1512,13 @@ class FallTable2Excutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 # Added 2022/09/21
 class TalkExcutor(ActionExecutor):
@@ -1602,13 +1602,13 @@ class FallFromExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 # Added 2022/09/21
 class FallBackExcutor(ActionExecutor):
@@ -1617,13 +1617,13 @@ class FallBackExcutor(ActionExecutor):
 
         info.set_current_line(script[0])
         char_node = _get_character_node(state, char_index)
-        if State.LYING in char_node.states or State.SITTING in char_node.states:
-            info.error("{} is not standing, lying or sitting", char_node)
+        # if State.LYING in char_node.states or State.SITTING in char_node.states: # Comment out for abnormal category 2023/03/20
+        #     info.error("{} is not standing, lying or sitting", char_node)
+        # else:
+        if modify:
+            yield state.change_state([])
         else:
-            if modify:
-                yield state.change_state([])
-            else:
-                yield state
+            yield state
 
 # Added 2022/09/22
 class GoDownExcutor(ActionExecutor):
