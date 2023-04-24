@@ -68,4 +68,6 @@ It will result two videos in the following views:
 
 <img src="../../assets/diagonal1_output_sample.png" width=50%><img src="../../assets/diagonal2_output_sample.png" width=50%>
 
+If the program contains room transitions, you can add each diagonal camera index in each param.
+
 For further reference, please check this notebook [ref](../../demo/scenario_generate_graph_and_video_with_cameras_changes.ipynb)
