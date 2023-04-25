@@ -12,4 +12,4 @@ Please ignore this file.
 **Objective** : Mainly used for data generation until the new camera setting is used. The latest simulator I used for this notebook is Build_2023_0404. Please read the comments carefully when you used this notebook. Some code should be added or some value should be changed according to the program requirements in advance of execution. The data output will be one third-person view video, one AUTO camera switching video and four fixed view videos.
 
 ### [scenario_generate_graph_and_video_with_cameras_changes.ipynb](../demo/scenario_generate_graph_and_video_with_cameras_changes.ipynb)
-**Objective** : This notebook is used for new camera setting. To use this file you will need a JSON file named 'camera_data_mapping.json' under '[resources](../../resources)' folder.
+**Objective** : This notebook is used for new camera setting. To use this file you will need a JSON file named 'camera_data_mapping.json' under '[resources](../resources/)' folder.
