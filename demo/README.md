@@ -3,6 +3,7 @@ Since we changed our execution methods for a number of times, the number of note
 
 ### [scenario_generate_graph_and_video_with_cameras_changes.ipynb](../demo/scenario_generate_graph_and_video_with_cameras_changes.ipynb)
 **Objective** : This notebook is used for programs with room transitions and included new camera setting. Before using this file, please make sure a JSON file named 'camera_data_mapping.json' is under '[resources](../resources/)' folder. The data output will be one third-person view video, one AUTO camera switching video (default), one selected camera switching video and two fixed view switching videos.
+
 **Procedure** : 
   Firstly, I suggest you to use graph's class_name values in our program scripts. You can find the class_name value in the graph by printing out:
   ```
@@ -26,7 +27,7 @@ Since we changed our execution methods for a number of times, the number of note
           "list_of_steps": list_of_steps
       })
   ```
-  In this block you need to set 'scene_id' value to which your target scene index. When you wrote the program script for scene 3, you need to change 'scene_id' value to 3. And run the block.
+  In this block you need to set 'scene_id' value to which your target scene index. When you wrote the program script for scene 3, you need to change 'scene_id' value to 3. **Your program file has to be located under 'dataset/Test/scene3' folder in this case.** And run the block.
   
   In the next block, there are some comment lines like this:
   ```python
@@ -38,11 +39,13 @@ Since we changed our execution methods for a number of times, the number of note
   ```python
   add_object_out_of_script('cat', 'livingroom', 'sofa', 'ON', 0)
   ```
-  This python function is written in this notebook somewhere above some blocks, you can check the description of it if you need. **Please note that you don't need to add manually everytime you need a new object because I developed this notebook to add the required object automatically as needed. But you may need to customize the location of newly added object. You can change positions at the 'possible_add_obj_position' JSON data located in the uppermost block. For some objects, you have to write manually. You will know when because an error will show when an object can't be added automatically.**
+  This python function is written in this notebook somewhere above some blocks, you can check the description of it if you need. **Please note that you don't need to add manually everytime you need a new object because I developed this notebook to add the required object automatically as needed. But you may need to customize the location of newly added object. You can change positions for each rooms and scenes at the 'possible_add_obj_position' JSON data located in the uppermost block. For some objects, you have to write manually. You will know when because an error will show when an object can't be added automatically.**
   
-  And then, you need to change 'initial_room' value to your desired room name where agent will be created. When everything is ready, you can run this block. It will generate the required images and JSON data respectively.
+  And then, **you need to change 'initial_room' value to your desired room name where agent will be created**. When everything is ready, you can run this block. If the execution is successful, it will generate the required images and JSON data respectively.
+  
   After that, you need to run two more blocks as its sequence to generate videos output.
-  With this steps, you are completely run the program. Since the code might be updated in anytimes as it needed, I request you to read every single comment in this notebook.
+  
+  With this steps, you had completely run the program. Since the code might be updated in anytimes as it needed, I suggest you to read every single comment in this notebook.
 
 ### [scenario_generate_graph_and_video.ipynb](../demo/scenario_generate_graph_and_video.ipynb)
 **Objective** : Mainly used for data generation until the new camera setting is used. The latest simulator I used for this notebook is Build_2023_0404. Please read the comments carefully when you used this notebook. Some code should be added or some value should be changed according to the program requirements in advance of execution. The data output will be one third-person view video, one AUTO camera switching video and four fixed view videos.
