@@ -8,7 +8,7 @@ Since we changed our execution methods for a number of times, the number of note
   ```
   {'id': 201, 'category': 'Decor', 'class_name': 'wallpictureframe', 'prefab_name': 'PRE_DEC_Painting_15', 'obj_transform': {'position': [-6.33500051, 1.67, 2.561001], 'rotation': [0.0, 0.0, 0.0, 1.00000012], 'scale': [0.46321243, 0.463212371, 0.8]}, 'bounding_box': {'center': [-6.32533836, 1.67, 2.56099987], 'size': [0.01932602, 0.582278132, 0.764504552]}, 'properties': ['GRABBABLE', 'HANGABLE', 'HAS_PAPER', 'MOVABLE'], 'states': []}
   ```
-  In the above example, we should use 'wallpictureframe' in program script whenever we need to deal with it. The program script should be in this format : <span style="background-color: #FFFF00">[WALK] <wallpictureframe> (1)</span>.
+  In the above example, we should use 'wallpictureframe' in program script whenever we need to deal with it. The program script should be in this format ==[WALK] <wallpictureframe> (1)==.
 
   To start using this notebook, you need to run each block in its sequence until you reach the following block:
   ```python
