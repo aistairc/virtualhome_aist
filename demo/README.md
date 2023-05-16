@@ -47,13 +47,15 @@ Since we changed our execution methods for a number of times, the number of note
   
   With this steps, you had completely run the program. Since the code might be updated in anytimes as it needed, I suggest you to read every single comment in this notebook.
 
-### [scenario_generate_graph_and_video.ipynb](../demo/scenario_generate_graph_and_video.ipynb)
+### [scenario_generate_graph_and_video.ipynb](../demo/old/scenario_generate_graph_and_video.ipynb)
 **Objective** : Mainly used for data generation until the new camera setting is used. The latest simulator I used for this notebook is Build_2023_0404. Please read the comments carefully when you used this notebook. Some code should be added or some value should be changed according to the program requirements in advance of execution. The data output will be one third-person view video, one AUTO camera switching video and four fixed view videos.
 
+**Procedure** : The procedure for this notebook is almost the same with above notebook. You need to run all the block in its sequence until you need to change the scene_index value, manually add objects and change initial_room value. **This notebook didn't include automatic adding new objects. So you need to write manually the python code all the time you add an object. Even though there is a code for automatic adding object in a block, you has to change the room, place and relation_type values.**
+
 ## Supplements
-### [Data_Renaming.ipynb](../demo/Data_Renaming.ipynb)
+### [Data_Renaming.ipynb](../demo/old/Data_Renaming.ipynb)
 Please ignore this file.  
 **Objective** : Only used to rename/modify the existing output data that generated before we changed category's program files and output data structure, like that file name should include underscore, file name should be unique, program name shouldn't include underscore, folder names under 'graph states' folder shouldn't have underscore, etc...
 
-### [Notebook_for_rename.ipynb](../demo/Notebook_for_rename.ipynb)
+### [Notebook_for_rename.ipynb](../demo/old/Notebook_for_rename.ipynb)
 **Objective** : When we changed the category's program files and output data structure, I used this notebook for modified new  program files. This file is a temporary used file. Later, I fixed the main notebook file 'scenario_generate_graph_and_video.ipynb' and used that file continuously. This file functions are exactly the same with main file except for output data file/folder names.
