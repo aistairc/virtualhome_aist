@@ -8,7 +8,7 @@ Since we changed our execution methods for a number of times, the number of note
   ```
   {'id': 201, 'category': 'Decor', 'class_name': 'wallpictureframe', 'prefab_name': 'PRE_DEC_Painting_15', 'obj_transform': {'position': [-6.33500051, 1.67, 2.561001], 'rotation': [0.0, 0.0, 0.0, 1.00000012], 'scale': [0.46321243, 0.463212371, 0.8]}, 'bounding_box': {'center': [-6.32533836, 1.67, 2.56099987], 'size': [0.01932602, 0.582278132, 0.764504552]}, 'properties': ['GRABBABLE', 'HANGABLE', 'HAS_PAPER', 'MOVABLE'], 'states': []}
   ```
-  In the above example, we should use 'wallpictureframe' in program script whenever we need to deal with it. The program script should be in this format ==[WALK] <wallpictureframe> (1)==.
+  In the above example, we should use 'wallpictureframe' in program script whenever we need to deal with it.
 
   To start using this notebook, you need to run each block in its sequence until you reach the following block:
   ```python
@@ -38,8 +38,11 @@ Since we changed our execution methods for a number of times, the number of note
   ```python
   add_object_out_of_script('cat', 'livingroom', 'sofa', 'ON', 0)
   ```
-  This python function is written in this notebook somewhere above some blocks, you can check the description of it if you need.
-  And then, you need to change 'initial_room' value to your desired room name where agent will be created.
+  This python function is written in this notebook somewhere above some blocks, you can check the description of it if you need. **Please note that you don't need to add manually everytime you need a new object because I developed this notebook to add the required object automatically as needed. But you may need to customize the location of newly added object. You can change positions at the 'possible_add_obj_position' JSON data located in the uppermost block. For some objects, you have to write manually. You will know when because an error will show when an object can't be added automatically.**
+  
+  And then, you need to change 'initial_room' value to your desired room name where agent will be created. When everything is ready, you can run this block. It will generate the required images and JSON data respectively.
+  After that, you need to run two more blocks as its sequence to generate videos output.
+  With this steps, you are completely run the program. Since the code might be updated in anytimes as it needed, I request you to read every single comment in this notebook.
 
 ### [scenario_generate_graph_and_video.ipynb](../demo/scenario_generate_graph_and_video.ipynb)
 **Objective** : Mainly used for data generation until the new camera setting is used. The latest simulator I used for this notebook is Build_2023_0404. Please read the comments carefully when you used this notebook. Some code should be added or some value should be changed according to the program requirements in advance of execution. The data output will be one third-person view video, one AUTO camera switching video and four fixed view videos.
