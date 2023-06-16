@@ -2,7 +2,7 @@
 
 This is an extended VirtualHome based on VirtualHome v2.2 with some additional functions.
 
-For more information about original VirtualHome, please see [here](http://virtual-home.org).
+For more information about original VirtualHome v2.2, please see [here](https://github.com/xavierpuigf/virtualhome/tree/v2.2.0).
 
 ## What is New
 * We added actions that can be executed in the Unity simulator. That is, many motions not supported by the original VirtualHome can now be executed.
