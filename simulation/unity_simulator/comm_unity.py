@@ -334,8 +334,9 @@ class UnityCommunication(object):
                       frame_rate=5, image_synthesis=['normal'], save_pose_data=False,
                       image_width=640, image_height=480, recording=False,
                       save_scene_states=False, camera_mode=['AUTO'], time_scale=1.0, skip_animation=False,
-                      vis_check_object=False, vis_check_character=False, out_graph=False,
-                      per_frame=5):
+                      vis_check_object=False, vis_check_character=False, vis_check_object_all=False,
+                      out_graph=False,
+                      per_frame=5, specified_cameras=[], diagonal_cameras1=[], diagonal_cameras2=[]):
         """
         Executes a script in the simulator. The script can be single or multi agent, 
         and can be used to generate a video, or just to change the state of the environment
@@ -362,8 +363,12 @@ class UnityCommunication(object):
         :param int vis_check_objectid; object id checked by all cameras <== Delete 3th/March/2022
         :param bool vis_check_object checked by all cameras or not
         :param bool vis_check_character checked by all camera or not
+        :param bool vis_check_object_all checked objects of the camera belong to the room
         :param bool out_graph out graph data every frame or not
-        :param bool per_frame out grap data per frame
+        :param int per_frame out grap data per frame
+        :param list specified_cameras: a list of camera indexes, must be used when the camera mode is 'SPECIFIED'. 'SPECIFIED' camera mode's functionalities are exactly same as 'AUTO' mode. 2023/04/21
+        :param list diagonal_cameras1: a list of each fixed diagonal camera index for each room, must be used when the camera mode is 'DIAGONAL1'. There should be only one camera index for each room. 2023/04/21
+        :param list diagonal_cameras2: a list of each fixed diagonal camera index for each room, must be used when the camera mode is 'DIAGONAL2'. There should be only one camera index for each room. 'DIAGONAL1' and 'DIAGONAL2' camera mode's functionalities are exactly same as 'AUTO' mode. 2023/04/21
 
         :return: pair success (bool), message: (str)
         """
@@ -377,7 +382,9 @@ class UnityCommunication(object):
                   'image_width': image_width, 'image_height': image_height,
                   'time_scale': time_scale, 'skip_animation': skip_animation,
                   'vis_check_object': vis_check_object, 'vis_check_character': vis_check_character,
-                  'out_graph': out_graph, 'per_frame': per_frame}
+                  'vis_check_object_all': vis_check_object_all,
+                  'out_graph': out_graph, 'per_frame': per_frame,
+                  'specified_cameras':specified_cameras, 'diagonal_cameras1':diagonal_cameras1, 'diagonal_cameras2':diagonal_cameras2}
         response = self.post_command({'id': str(time.time()), 'action': 'render_script',
                                       'stringParams': [json.dumps(params)] + script})
 

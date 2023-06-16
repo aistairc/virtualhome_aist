@@ -112,7 +112,7 @@ def get_preconds_script(script_lines):
         action, obj_names, ins_num = parseStrBlock(curr_block)
         if action in ['Sit', 'Lie']:
             is_sitting = (obj_names[0], ins_num[0])
-        elif action in ['StandUp', 'Walk', 'Run']:
+        elif action in ['StandUp', 'Walk', 'Run', 'STAND']: # Add STAND 2023/03/06
             is_sitting = None
 
         else:
@@ -145,7 +145,7 @@ def get_preconds_script(script_lines):
     for i in range(len(content)):
         curr_block = content[i]
         action, obj_names, ins_num = parseStrBlock(curr_block)
-        if action == 'Sit':
+        if action.upper() == 'SIT': # Edit condition writing style 2022/12/09
             if (not is_sitting) and (not is_lying):
                 is_sitting = True
             else:
@@ -153,7 +153,7 @@ def get_preconds_script(script_lines):
                 # print('\n'.join(content))
         if action == 'Lie':
             is_lying = True
-        if action.upper() in ['STANDUP', 'WAKEUP']:
+        if action.upper() in ['STANDUP', 'WAKEUP', 'STAND']: # Add STAND 2023/03/06
             if is_sitting or is_lying:
                 is_sitting = False
                 is_lying = False
@@ -337,7 +337,7 @@ def get_preconds_script(script_lines):
         action, obj_names, ins_num = parseStrBlock(curr_block)
         if action in ['Sit', 'Lie']:
             is_sitting = (obj_names[0], ins_num[0])
-        elif action in ['StandUp', 'Walk', 'Run']:
+        elif action in ['StandUp', 'Walk', 'Run', 'STAND']: # Add STAND 2023/03/06
             is_sitting = None
 
         else:
@@ -418,4 +418,3 @@ for script_name in all_scripts:
             os.makedirs(os.path.dirname(json_file))
         with open(json_file, 'w+') as f:
             f.write(json.dumps(precond_dict.printCondsJSON()))
-
