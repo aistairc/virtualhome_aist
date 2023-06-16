@@ -2,53 +2,15 @@
 
 This is an extended VirtualHome based on VirtualHome v2.2 with some additional functions.
 
-**VirtualHome** is a platform to simulate complex household activities via programs. Key aspect of VirtualHome is that it allows complex interactions with the environment, such as picking up objects, switching on/off appliances, opening appliances, etc. Our simulator can easily be called with a Python API: write the activity as a simple sequence of instructions which then get rendered in VirtualHome. You can choose between different agents and environments, as well as modify environments on the fly. You can also stream different ground-truth such as time-stamped actions, instance/semantic segmentation, and optical flow and depth. The platform allows to simulate multi-agent activities and can serve as an environment to train agents.
-
-Check out more details of the environmnent and platform at [**virtual-home.org**](http://virtual-home.org). 
-
-<p align="center">
-  <img width="460" height="300" src="assets/vh_intro.gif">
-</p>
+For more information about original VirtualHome, please see [here](http://virtual-home.org).
 
 ## What is New
-The new version of VirtualHome (VH-Social) is out! Here is what is new.
-* VirtualHome now supports multiple agents and a *skip_animation* mode, to use the environment to train RL models.
-* We include OpenAI Gym like environments to train RL agents with VirtualHome. Check out the [unity_environment.py](simulation/environment/unity_environment.py) class.
-* API to add characters in the scene and fixed cameras, and record from those cameras
+* We added actions that can be executed in the Unity simulator. That is, many motions not supported by the original VirtualHome can now be executed.
+* Several new camera modes have been added.
+* It is now possible to output JSON data in frame-by-frame.
+* The 2D bounding boxes of objects can now be output.
+* A convenient jupyter notebook is provided to run a large number of simulations based on the script data and save the results.
 
-
-
-## Contents
-
-1. Overview
-2. Set Up
-3. Generating Videos/Keyframes
-4. Dataset 
-5. Modify VirtualHome
-6. Citation
-7. Contributors
-
-
-## Overview
-Activities in VirtualHome are represented through two components: *programs* representing the sequence of actions that compose an activity, and *graphs* representing a definition of the environment where the activity takes place. Given a program and a graph, the simulator executes the program, generating a video of the activity or a sequence of graphs representing how the environment evolves as the activity takes place. To this end, VirtualHome includes two simulators: the *Unity Simulator* and *Evolving Graph*.
-
-#### Unity Simulator 
-This simulator is built in Unity and allows generating videos of activities. To use this simulator, you will need to download the appropiate executable and run it with the [Python API](simulation/unity_simulator/). You can check a demo of the simulator in [demo/unity_demo.ipynb](demo/unity_demo.ipynb)
-
-#### Evolving Graph
-This simulator runs fully in python and allows to generate a sequence of graphs when a program is executed. You can run it in [simulation/evolving_graph](simulation/evolving_graph). Note that some of the objects and actions in this simulator are not supported yet in Unity Simulator.
-
-
-## Set Up
-
-
-### Clone repository and install the dependencies
-Note that this code base is based on Python 3
-```bash
-git clone https://github.com/xavierpuigf/virtualhome.git
-pip install -r requirements.txt
-```
-We also provide a [Jupyter](https://jupyter.org/) notebook with a demo and starting code. If you want to run the demo, [install Jupyter](https://jupyter.org/install.html) and run it on your host. If you are new to Jupyter, see [Running the Jupyter Notebook](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) for a walkthrough of how to use this tool.
 
 ### Download Unity Simulator
 Download the VirtualHome UnitySimulator executable and move it under `simulation/unity_simulator`.
