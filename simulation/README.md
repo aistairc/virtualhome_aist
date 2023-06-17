@@ -463,7 +463,7 @@ Turns 30 degrees clockwise
 ## Supported in Unity Simulator
 Here is the list with Executors currently supported in the Unity Simulator. The rest are only supported in Graph Evolve simulator.
 
-****Actions in bold are newly added by VirtualHome-AIST.</a>**
+**Actions in bold are newly added by VirtualHome-AIST.**
 
 Action Executor | Supported Unity
 ------------ | -------------

@@ -5,7 +5,7 @@ This is an extended VirtualHome based on VirtualHome v2.2 with some additional f
 For more information about original VirtualHome v2.2, please see [here](https://github.com/xavierpuigf/virtualhome/tree/v2.2.0).
 
 ## What is New
-* We added actions that can be executed in the Unity simulator. That is, many motions not supported by the original VirtualHome can now be executed.
+* We added [actions](./simulation/README.md#supported-in-unity-simulator) that can be executed in the Unity simulator. That is, many motions not supported by the original VirtualHome can now be executed.
 * Several new camera modes have been added.
 * It is now possible to output JSON data in frame-by-frame.
 * The 2D bounding boxes of objects can now be output.
