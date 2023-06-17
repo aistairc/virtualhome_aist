@@ -6,7 +6,7 @@ For more information about original VirtualHome v2.2, please see [here](https://
 
 ## What is New
 * We added [actions](./simulation/README.md#supported-in-unity-simulator) that can be executed in the Unity simulator. That is, many motions not supported by the original VirtualHome can now be executed.
-* Several new camera modes have been added.
+* Several [new camera modes](https://github.com/aistairc/virtualhome_unity_aist#addition-of-new-four-cameras) have been added.
 * It is now possible to output JSON data in frame-by-frame.
 * The 2D bounding boxes of objects can now be output.
 * A convenient jupyter notebook is provided to run a large number of simulations based on the script data and save the results.
@@ -23,6 +23,7 @@ To test the simulator in a local machine, double click the executable.
 
 ### Generating Videos and JSON data
 
+To use the functions added by VirtualHome-AIST, please see here.
 * [VH Execution Notebooks](https://github.com/aistairc/virtualhome_aist/tree/main/demo)
 
 
