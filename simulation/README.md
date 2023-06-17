@@ -463,7 +463,7 @@ Turns 30 degrees clockwise
 ## Supported in Unity Simulator
 Here is the list with Executors currently supported in the Unity Simulator. The rest are only supported in Graph Evolve simulator.
 
-**<span style="color: orange; ">Actions in orange are newly added by VirtualHome-AIST.</a>**
+**<span style="color:red; ">Actions in red are newly added by VirtualHome-AIST.</a>**
 
 Action Executor | Supported Unity
 ------------ | -------------
@@ -487,56 +487,56 @@ SwitchOffExecutor | :white_check_mark:
 DrinkExecutor | :white_check_mark:
 TurnToExecutor | :white_check_mark:
 LookAtExecutor | :white_check_mark:
-<span style="color: orange; ">WipeExecutor</span> | :white_check_mark
+<span style="color:red; ">WipeExecutor</span> | :white_check_mark
 PutOnExecutor |
 PutOffExecutor |
 GreetExecutor |
 DropExecutor |
-<span style="color: orange; ">ReadExecutor</span> | :white_check_mark
+<span style="color:red; ">ReadExecutor</span> | :white_check_mark
 TouchExecutor | :white_check_mark:
 LieExecutor |
-<span style="color: orange; ">PourExecutor</span> | :white_check_mark:
-<span style="color: orange; ">TypeExecutor</span> | :white_check_mark:
+<span style="color:red; ">PourExecutor</span> | :white_check_mark:
+<span style="color:red; ">TypeExecutor</span> | :white_check_mark:
 WatchExecutor |
 MoveExecutor |
 WashExecutor |
-<span style="color: orange; ">SqueezeExecutor</span> | :white_check_mark:
+<span style="color:red; ">SqueezeExecutor</span> | :white_check_mark:
 PlugInExecutor |
 PlugOutExecutor |
-<span style="color: orange; ">CutExecutor</span> | :white_check_mark:
-<span style="color: orange; ">EatExecutor</span> | :white_check_mark:
+<span style="color:red; ">CutExecutor</span> | :white_check_mark:
+<span style="color:red; ">EatExecutor</span> | :white_check_mark:
 SleepExecutor |
 WakeUpExecutor |
-<span style="color: orange; ">BrushExecutor</span> | :white_check_mark:
-<span style="color: orange; ">FoldExecutor</span> | :white_check_mark:
-<span style="color: orange; ">JumpExecutor</span> | :white_check_mark:
-<span style="color: orange; ">JumpUpExecutor<sup>*</sup></span> | :white_check_mark:
-<span style="color: orange; ">JumpDownExecutor<sup>*</sup></span> | :white_check_mark:
-<span style="color: orange; ">KneelExecutor</span> | :white_check_mark:
-<span style="color: orange; ">LiftExecutor</span> | :white_check_mark:
-<span style="color: orange; ">RinseExecutor</span> | :white_check_mark:
-<span style="color: orange; ">SquatExecutor</span> | :white_check_mark:
-<span style="color: orange; ">StreachExecutor</span> | :white_check_mark:
-<span style="color: orange; ">SweepExecutor</span> | :white_check_mark:
-<span style="color: orange; ">StirExecutor</span> | :white_check_mark:
-<span style="color: orange; ">ThrowExecutor</span> | :white_check_mark:
-<span style="color: orange; ">UnfoldExecutor</span> | :white_check_mark:
-<span style="color: orange; ">VacuumExecutor</span> | :white_check_mark:
-<span style="color: orange; ">WrapExecutor</span> | :white_check_mark:
-<span style="color: orange; ">WriteExecutor</span> | :white_check_mark:
-<span style="color: orange; ">FallExecutor</span> | :white_check_mark:
-<span style="color: orange; ">FallSitExecutor</span> | :white_check_mark:
-<span style="color: orange; ">ClimbExecutor<sup>*</sup></span> | :white_check_mark:
-<span style="color: orange; ">GoDownExecutor<sup>*</sup></span> | :white_check_mark:
-<span style="color: orange; ">FallTableExecutor</span> | :white_check_mark:
-<span style="color: orange; ">FallBackExecutor</span> | :white_check_mark:
-<span style="color: orange; ">StandExecutor</span> | :white_check_mark:
-<span style="color: orange; ">StraddleExecutor</span> | :white_check_mark:
-<span style="color: orange; ">LegOppExecutor</span> | :white_check_mark:
-<span style="color: orange; ">ScrubExecutor</span> | :white_check_mark:
-<span style="color: orange; ">ShakeExecutor</span> | :white_check_mark:
-<span style="color: orange; ">SmellExecutor</span> | :white_check_mark:
-<span style="color: orange; ">SoakExecutor</span> | :white_check_mark:
+<span style="color:red; ">BrushExecutor</span> | :white_check_mark:
+<span style="color:red; ">FoldExecutor</span> | :white_check_mark:
+<span style="color:red; ">JumpExecutor</span> | :white_check_mark:
+<span style="color:red; ">JumpUpExecutor<sup>*</sup></span> | :white_check_mark:
+<span style="color:red; ">JumpDownExecutor<sup>*</sup></span> | :white_check_mark:
+<span style="color:red; ">KneelExecutor</span> | :white_check_mark:
+<span style="color:red; ">LiftExecutor</span> | :white_check_mark:
+<span style="color:red; ">RinseExecutor</span> | :white_check_mark:
+<span style="color:red; ">SquatExecutor</span> | :white_check_mark:
+<span style="color:red; ">StreachExecutor</span> | :white_check_mark:
+<span style="color:red; ">SweepExecutor</span> | :white_check_mark:
+<span style="color:red; ">StirExecutor</span> | :white_check_mark:
+<span style="color:red; ">ThrowExecutor</span> | :white_check_mark:
+<span style="color:red; ">UnfoldExecutor</span> | :white_check_mark:
+<span style="color:red; ">VacuumExecutor</span> | :white_check_mark:
+<span style="color:red; ">WrapExecutor</span> | :white_check_mark:
+<span style="color:red; ">WriteExecutor</span> | :white_check_mark:
+<span style="color:red; ">FallExecutor</span> | :white_check_mark:
+<span style="color:red; ">FallSitExecutor</span> | :white_check_mark:
+<span style="color:red; ">ClimbExecutor<sup>*</sup></span> | :white_check_mark:
+<span style="color:red; ">GoDownExecutor<sup>*</sup></span> | :white_check_mark:
+<span style="color:red; ">FallTableExecutor</span> | :white_check_mark:
+<span style="color:red; ">FallBackExecutor</span> | :white_check_mark:
+<span style="color:red; ">StandExecutor</span> | :white_check_mark:
+<span style="color:red; ">StraddleExecutor</span> | :white_check_mark:
+<span style="color:red; ">LegOppExecutor</span> | :white_check_mark:
+<span style="color:red; ">ScrubExecutor</span> | :white_check_mark:
+<span style="color:red; ">ShakeExecutor</span> | :white_check_mark:
+<span style="color:red; ">SmellExecutor</span> | :white_check_mark:
+<span style="color:red; ">SoakExecutor</span> | :white_check_mark:
 
 <sup>*</sup> Objects avatars can climb are limited to coffee tables and beds
 
