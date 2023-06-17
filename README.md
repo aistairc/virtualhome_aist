@@ -32,10 +32,14 @@ A framework to convert VirtualHome execution results into knowledge graphs.
 
 For more information, please visit [**here**](https://github.com/aistairc/virtualhome2kg).
 
-## Resources
+## Datasets
 
 Datasets created using VirtualHome-AIST and VirtualHome2KG are available [**here**](https://github.com/KnowledgeGraphJapan/KGRC-RDF/blob/kgrc4si/README_en.md).
 
+## Visualization
+
+A visualization tool was developed to simultaneously check the generated videos and corresponding knowledge graphs.
+* [https://github.com/aistairc/virtualhome2kg_visualization](https://github.com/aistairc/virtualhome2kg_visualization)
 
 ## VirtualHome-AIST Unity Source Code
 
