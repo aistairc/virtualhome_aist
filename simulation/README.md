@@ -295,10 +295,10 @@ Turns 30 degrees clockwise
 	- exists edge `character` facing `object`
 
 ### WipeExecutor
-- script: Wipe `object`
+- script: Wipe `object1` `object2`
 - Pre-condition: 
-	- `character` close `object`
-	- exists edge `character` holds_rh `object` or `character` holds_lh `object`
+	- `character` close `object1`
+	- exists edge `character` holds_rh `object1` or `character` holds_lh `object1`
 - Post-condition:
 	- state changes: `object` state is clean
 
@@ -393,7 +393,7 @@ Turns 30 degrees clockwise
 	- no edge `character` holds_rh `any_object` or no edge `character` holds_lh `any_object`  // character has at least one free hand
 
 ### WashExecutor (shared with RinseExecutor and ScrubExecutor)
-- script: wash `object`
+- script: wash `object` / rinse 'object' / scrub 'object1' 'object2'
 - Pre-condition:
 	- exist edge `character` close `object`
 - Post-condition:
@@ -432,12 +432,12 @@ Turns 30 degrees clockwise
 
 
 ### CutExecutor
-- script: cut `object`
+- script: cut `object1` `object2`
 - Pre-condition:
-	- `object` property is eatable
-	- `object` property is cuttable
+	- `object2` property is eatable
+	- `object1` property is cuttable
 	- no edge `character` holds_rh `any_object` or no edge `character` holds_lh `any_object`
-	- exist edge `character` close `object`
+	- exist edge `character` close `any_object`
 	- exist edge `chatectore` holds_rh `any_object` with 'knife' in name or no edge `character` holds_lh `any_object` with 'knife' in name
 
 
@@ -458,6 +458,123 @@ Turns 30 degrees clockwise
 - script: wakeup
 - Pre-condition:
 	- `character` is lying or sitting
+
+### JumpExecutor
+- script: jumb
+
+### KneelExecutor
+- script: kneel
+
+### LiftExecutor
+- script: lift object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### SquatExecutor
+- script: squat
+
+### StretchExecutor
+- script: stretch
+
+### SweepExecutor
+- script: sweep object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### ThrowExecutor
+- script: throw object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### UnfoldExecutor
+- script: unfold object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### VacuumExecutor
+- script: vacuum
+
+### WrapExecutor
+- script: wrap object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### WriteExecutor
+- script: write object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### FallExecutor
+- script: fall
+
+### StraddleExecutor
+- script: straddle
+
+### LegOppExecutor
+- script: legOpp
+
+### ShakeExecutor
+- script: shake object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### SoakExecutor
+- script: shake object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### FallSitExecutor
+- script: fallsit object
+- Pre-condition:
+ 	- exist edge `character` close `object`
+
+### ClimbExecutor
+- script: climb object
+- Pre-condition:
+ 	- exist edge `character` close `object`
+
+### FallTable1Executor
+- script: falltable1
+
+### FallTable2Executor
+- script: falltable2
+
+### TalkExecutor
+- script: talk object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### TextExecutor
+- script: text object
+- Pre-condition:
+	- object state grabed
+ 	- exist edge `character` close `object`
+
+### FoldExecutor
+- script: fold
+
+### JumpUpExecutor
+- script: jumpup object
+- Pre-condition:
+ 	- exist edge `character` close `object`
+
+### JumpDownExecutor
+- script: jumpdown
+
+### FallFromExecutor
+- script: fallfrom
+
+### FallBackExecutor
+- script: fallback
 
 
 ## Supported in Unity Simulator
@@ -516,7 +633,7 @@ WakeUpExecutor |
 **LiftExecutor** | :white_check_mark:
 **RinseExecutor** | :white_check_mark:
 **SquatExecutor** | :white_check_mark:
-**StreachExecutor** | :white_check_mark:
+**StretchExecutor** | :white_check_mark:
 **SweepExecutor** | :white_check_mark:
 **StirExecutor** | :white_check_mark:
 **ThrowExecutor** | :white_check_mark:
@@ -528,7 +645,8 @@ WakeUpExecutor |
 **FallSitExecutor** | :white_check_mark:
 **ClimbExecutor<sup>*</sup>** | :white_check_mark:
 **GoDownExecutor<sup>*</sup>** | :white_check_mark:
-**FallTableExecutor** | :white_check_mark:
+**FallTable1Executor** | :white_check_mark:
+**FallTable2Executor** | :white_check_mark:
 **FallBackExecutor** | :white_check_mark:
 **StandExecutor** | :white_check_mark:
 **StraddleExecutor** | :white_check_mark:
@@ -537,6 +655,9 @@ WakeUpExecutor |
 **ShakeExecutor** | :white_check_mark:
 **SmellExecutor** | :white_check_mark:
 **SoakExecutor** | :white_check_mark:
+**TalkExecutor** | :white_check_mark:
+**TextExecutor** | :white_check_mark:
+**FallFromExecutor** | :white_check_mark:
 
 <sup>*</sup> Objects avatars can climb are limited to coffee tables and beds
 
