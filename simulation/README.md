@@ -463,6 +463,8 @@ Turns 30 degrees clockwise
 ## Supported in Unity Simulator
 Here is the list with Executors currently supported in the Unity Simulator. The rest are only supported in Graph Evolve simulator.
 
+**Actions in bold are newly added by VirtualHome-AIST.**
+
 Action Executor | Supported Unity
 ------------ | -------------
 FindExecutor  | :white_check_mark:
@@ -485,26 +487,58 @@ SwitchOffExecutor | :white_check_mark:
 DrinkExecutor | :white_check_mark:
 TurnToExecutor | :white_check_mark:
 LookAtExecutor | :white_check_mark:
-WipeExecutor |
+**WipeExecutor** | :white_check_mark:
 PutOnExecutor |
 PutOffExecutor |
 GreetExecutor |
 DropExecutor |
-ReadExecutor |
+**ReadExecutor** | :white_check_mark:
 TouchExecutor | :white_check_mark:
 LieExecutor |
-PourExecutor |
-TypeExecutor |
+**PourExecutor** | :white_check_mark:
+**TypeExecutor** | :white_check_mark:
 WatchExecutor |
 MoveExecutor |
 WashExecutor |
-SqueezeExecutor |
+**SqueezeExecutor** | :white_check_mark:
 PlugInExecutor |
 PlugOutExecutor |
-CutExecutor |
-EatExecutor |
+**CutExecutor** | :white_check_mark:
+**EatExecutor** | :white_check_mark:
 SleepExecutor |
 WakeUpExecutor |
+**BrushExecutor** | :white_check_mark:
+**FoldExecutor** | :white_check_mark:
+**JumpExecutor** | :white_check_mark:
+**JumpUpExecutor<sup>*</sup>** | :white_check_mark:
+**JumpDownExecutor<sup>*</sup>** | :white_check_mark:
+**KneelExecutor** | :white_check_mark:
+**LiftExecutor** | :white_check_mark:
+**RinseExecutor** | :white_check_mark:
+**SquatExecutor** | :white_check_mark:
+**StreachExecutor** | :white_check_mark:
+**SweepExecutor** | :white_check_mark:
+**StirExecutor** | :white_check_mark:
+**ThrowExecutor** | :white_check_mark:
+**UnfoldExecutor** | :white_check_mark:
+**VacuumExecutor** | :white_check_mark:
+**WrapExecutor** | :white_check_mark:
+**WriteExecutor** | :white_check_mark:
+**FallExecutor** | :white_check_mark:
+**FallSitExecutor** | :white_check_mark:
+**ClimbExecutor<sup>*</sup>** | :white_check_mark:
+**GoDownExecutor<sup>*</sup>** | :white_check_mark:
+**FallTableExecutor** | :white_check_mark:
+**FallBackExecutor** | :white_check_mark:
+**StandExecutor** | :white_check_mark:
+**StraddleExecutor** | :white_check_mark:
+**LegOppExecutor** | :white_check_mark:
+**ScrubExecutor** | :white_check_mark:
+**ShakeExecutor** | :white_check_mark:
+**SmellExecutor** | :white_check_mark:
+**SoakExecutor** | :white_check_mark:
+
+<sup>*</sup> Objects avatars can climb are limited to coffee tables and beds
 
 
 
