@@ -538,11 +538,13 @@ Turns 30 degrees clockwise
 
 ### ClimbExecutor
 - script: climb 'object'
+- description: can only be used coffeetable and bed
 - Pre-condition:
  	- exist edge `character` close `object`
 
 ### FallTable1Executor
 - script: falltable1
+- description: can only be used coffeetable and bed
 - Pre-condition:
  	- exist edge `character` on `object`
 - Post-condition:
@@ -550,6 +552,7 @@ Turns 30 degrees clockwise
 
 ### FallTable2Executor
 - script: falltable2
+- description: can only be used coffeetable and bed
 - Pre-condition:
  	- exist edge `character` on `object`
 - Post-condition:
@@ -572,20 +575,24 @@ Turns 30 degrees clockwise
 
 ### JumpUpExecutor
 - script: jumpup 'object'
+- description: can only be used coffeetable and bed
 - Pre-condition:
  	- exist edge `character` close `object`
 
 ### JumpDownExecutor
 - script: jumpdown
+- description: can only be used after climbing coffeetable and bed
 
 ### FallFromExecutor
 - script: fallfrom
+- description: can only be used after climbing coffeetable and bed
 
 ### FallBackExecutor
 - script: fallback
 
 ### GoDownExecutor
 - script: godown
+- description: can only be used after climbing coffeetable and bed
 
 ### StandExecutor
 - script: stand
