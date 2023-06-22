@@ -466,9 +466,9 @@ Turns 30 degrees clockwise
 - script: kneel
 
 ### LiftExecutor
-- script: lift object
+- script: lift 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### SquatExecutor
@@ -478,36 +478,36 @@ Turns 30 degrees clockwise
 - script: stretch
 
 ### SweepExecutor
-- script: sweep object
+- script: sweep 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### ThrowExecutor
-- script: throw object
+- script: throw 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### UnfoldExecutor
-- script: unfold object
+- script: unfold 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### VacuumExecutor
 - script: vacuum
 
 ### WrapExecutor
-- script: wrap object
+- script: wrap 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### WriteExecutor
-- script: write object
+- script: write 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### FallExecutor
@@ -520,50 +520,58 @@ Turns 30 degrees clockwise
 - script: legOpp
 
 ### ShakeExecutor
-- script: shake object
+- script: shake 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### SoakExecutor
-- script: shake object
+- script: shake 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### FallSitExecutor
-- script: fallsit object
+- script: fallsit 'object'
 - Pre-condition:
  	- exist edge `character` close `object`
 
 ### ClimbExecutor
-- script: climb object
+- script: climb 'object'
 - Pre-condition:
  	- exist edge `character` close `object`
 
 ### FallTable1Executor
 - script: falltable1
+- Pre-condition:
+ 	- exist edge `character` on `object`
+- Post-condition:
+	- remove directed edges: `character` on `object`
 
 ### FallTable2Executor
 - script: falltable2
+- Pre-condition:
+ 	- exist edge `character` on `object`
+- Post-condition:
+	- remove directed edges: `character` on `object`
 
 ### TalkExecutor
-- script: talk object
+- script: talk 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### TextExecutor
-- script: text object
+- script: text 'object'
 - Pre-condition:
-	- object state grabed
+	- 'object' state grabed
  	- exist edge `character` close `object`
 
 ### FoldExecutor
 - script: fold
 
 ### JumpUpExecutor
-- script: jumpup object
+- script: jumpup 'object'
 - Pre-condition:
  	- exist edge `character` close `object`
 
@@ -575,6 +583,18 @@ Turns 30 degrees clockwise
 
 ### FallBackExecutor
 - script: fallback
+
+### GoDownExecutor
+- script: godown
+
+### StandExecutor
+- script: stand
+
+### BrushExecutor
+- script: brush 'object'
+- Pre-condition:
+	- 'object' state grabed
+ 	- exist edge `character` close `object`
 
 
 ## Supported in Unity Simulator
@@ -645,8 +665,8 @@ WakeUpExecutor |
 **FallSitExecutor** | :white_check_mark:
 **ClimbExecutor<sup>*</sup>** | :white_check_mark:
 **GoDownExecutor<sup>*</sup>** | :white_check_mark:
-**FallTable1Executor** | :white_check_mark:
-**FallTable2Executor** | :white_check_mark:
+**FallTable1Executor<sup>*</sup>** | :white_check_mark:
+**FallTable2Executor<sup>*</sup>** | :white_check_mark:
 **FallBackExecutor** | :white_check_mark:
 **StandExecutor** | :white_check_mark:
 **StraddleExecutor** | :white_check_mark:
@@ -657,7 +677,7 @@ WakeUpExecutor |
 **SoakExecutor** | :white_check_mark:
 **TalkExecutor** | :white_check_mark:
 **TextExecutor** | :white_check_mark:
-**FallFromExecutor** | :white_check_mark:
+**FallFromExecutor<sup>*</sup>** | :white_check_mark:
 
 <sup>*</sup> Objects avatars can climb are limited to coffee tables and beds
 
