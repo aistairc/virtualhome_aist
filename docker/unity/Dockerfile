@@ -8,11 +8,11 @@ RUN apt-get install -y --no-install-recommends \
 RUN apt install -y unzip
 RUN mkdir -p /unity_vol/executable_unix
 # aistairc/virtualhome_unity_aist へのアクセス権限が必要なので
-# https://github.com/aistairc/virtualhome_unity_aist/releases/download/Build_2023_0111/Build_2023_0111_linux.zip を事前にダウンロードしておく
-COPY Modified_Camera_Build_Linux.zip /tmp/.
-RUN unzip -d /tmp /tmp/Modified_Camera_Build_Linux.zip
+# https://github.com/aistairc/virtualhome_unity_aist/releases/download/Door_Modified_Build_2023_0404/Modified_Camera_Build_Linux.zip を事前にダウンロードしておく
+COPY Door_Modified_Build_2023_0404/Modified_Camera_Build_Linux.zip /tmp/.
+RUN unzip -d /tmp /tmp/Door_Modified_Build_2023_0404/Modified_Camera_Build_Linux.zip
 RUN cp -r /tmp/Modified_Camera_Build_Linux/* /unity_vol/executable_unix
-RUN chmod +x /unity_vol/executable_unix/Modified_Camera_Build_Linux.x86_64
+RUN chmod +x /unity_vol/executable_unix/Door_Modified_Build_2023_0404/Modified_Camera_Build_Linux.x86_64
 
 COPY ./run_sim.sh /
 RUN chmod +x /run_sim.sh
