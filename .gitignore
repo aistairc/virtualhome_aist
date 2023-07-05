@@ -188,3 +188,6 @@ demo/behavioral_data_augmentation-Copy2.ipynb
 demo/csv2rdf.ipynb
 demo/example.ttl
 demo/episodes/*
+simulation/Output.zip
+*.app
+demo/graph_state_list_with_bbox_png/
