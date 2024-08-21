@@ -102,7 +102,7 @@ def dump_one_data(txt_file, script, graph_state_list, id_mapping, graph_path):
     new_f.close()
 
 
-def translate_graph_dict_nofile(graph_dict):
+def translate_graph_dict_nofile(graph_dict, script_lines=[]):
 
     abs_dir_path = os.path.dirname(os.path.abspath(__file__))
 
@@ -123,10 +123,18 @@ def translate_graph_dict_nofile(graph_dict):
 
     static_objects = static_objects + [x.replace('_', '') for x in static_objects]
 
-    new_nodes = [i for i in filter(lambda v: v["class_name"] in static_objects, graph_dict['nodes'])]
-    trimmed_nodes = [i for i in filter(lambda v: v["class_name"] not in static_objects, graph_dict['nodes'])]
+    script_object_ids = []
+    script = read_script_from_list_string(script_lines)
+    for script_line in script:
+        for param in script_line.parameters:
+            script_object_ids.append(param.instance)
+    # remove duplicates
+    script_object_ids = list(set(script_object_ids))
 
-    available_id = [i["id"] for i in filter(lambda v: v["class_name"] in static_objects, graph_dict['nodes'])]
+    new_nodes = [i for i in filter(lambda v: v["class_name"] in static_objects or v["id"] in script_object_ids, graph_dict['nodes'])]
+    trimmed_nodes = [i for i in filter(lambda v: v["class_name"] not in static_objects and v["id"] not in script_object_ids, graph_dict['nodes'])]
+
+    available_id = [i["id"] for i in filter(lambda v: v["class_name"] in static_objects or v["id"] in script_object_ids, graph_dict['nodes'])]
 
     new_edges = [i for i in filter(lambda v: v['to_id'] in available_id and v['from_id'] in available_id, graph_dict['edges'])]
 
