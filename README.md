@@ -47,5 +47,21 @@ A visualization tool was developed to simultaneously check the generated videos 
 Please visit [here](https://github.com/aistairc/virtualhome_unity_aist/).
 
 
+## Publication
+Shusaku Egami, Takanori Ugai, Swe Nwe Nwe Htun, Ken Fukuda: "VHAKG: A Multi-modal Knowledge Graph Based on Synchronized Multi-view Videos of Daily Activities." Proceedings of the 33rd ACM International Conference on Information and Knowledge Management (CIKM2024), to appear, 2024.10 [[preprint](https://arxiv.org/abs/2408.14895)]
+
+```
+@InProceedings{egami24vhakg,
+author="Shusaku Egami
+and Takanori Ugai
+and Swe Nwe Nwe Htun
+and Ken Fukuda",
+title="{VHAKG}: A Multi-modal Knowledge Graph Based on Synchronized Multi-view Videos of Daily Activities",
+booktitle="Proceedings of the 33rd ACM International Conference on Information and Knowledge Management",
+note="to appear",
+year="2024",
+doi="10.1145/3627673.3679175"
+}
+```
 
 
