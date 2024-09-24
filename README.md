@@ -35,7 +35,7 @@ For more information, please visit [**here**](https://github.com/aistairc/virtua
 
 ## Datasets
 
-Datasets created using VirtualHome-AIST and VirtualHome2KG are available [**here**](https://github.com/KnowledgeGraphJapan/KGRC-RDF/blob/kgrc4si/README_en.md).
+Datasets created using VirtualHome-AIST and VirtualHome2KG are available [**here**](https://github.com/KnowledgeGraphJapan/KGRC-RDF/blob/kgrc4si/README.md).
 
 ## Visualization
 
