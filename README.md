@@ -58,7 +58,7 @@ and Swe Nwe Nwe Htun
 and Ken Fukuda",
 title="{VHAKG}: A Multi-modal Knowledge Graph Based on Synchronized Multi-view Videos of Daily Activities",
 booktitle="Proceedings of the 33rd ACM International Conference on Information and Knowledge Management",
-note="to appear",
+pages="5360–5364",
 year="2024",
 doi="10.1145/3627673.3679175"
 }
